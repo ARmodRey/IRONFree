@@ -1,0 +1,2 @@
+/usr/bin/ar qc libWPTool.a  CMakeFiles/WPTool.dir/src/WPTool.cpp.o
+/usr/bin/ranlib libWPTool.a

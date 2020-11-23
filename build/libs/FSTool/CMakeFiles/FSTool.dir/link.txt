@@ -1,0 +1,2 @@
+/usr/bin/ar qc libFSTool.a  CMakeFiles/FSTool.dir/src/FSTool.cpp.o CMakeFiles/FSTool.dir/src/file.cpp.o CMakeFiles/FSTool.dir/src/folder.cpp.o
+/usr/bin/ranlib libFSTool.a

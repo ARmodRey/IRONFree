@@ -1,0 +1,9 @@
+/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles/rebuild_cache.dir
+/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles/edit_cache.dir
+/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles/ARNscript_interpreter.dir
+/media/armodrey/ARMODISK/projects/ARNscript/build/libs/FSTool/CMakeFiles/rebuild_cache.dir
+/media/armodrey/ARMODISK/projects/ARNscript/build/libs/FSTool/CMakeFiles/edit_cache.dir
+/media/armodrey/ARMODISK/projects/ARNscript/build/libs/FSTool/CMakeFiles/FSTool.dir
+/media/armodrey/ARMODISK/projects/ARNscript/build/libs/WPTool/CMakeFiles/rebuild_cache.dir
+/media/armodrey/ARMODISK/projects/ARNscript/build/libs/WPTool/CMakeFiles/edit_cache.dir
+/media/armodrey/ARMODISK/projects/ARNscript/build/libs/WPTool/CMakeFiles/WPTool.dir

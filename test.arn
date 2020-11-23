@@ -1,0 +1,12 @@
+file one => "1.txt";
+file two => "2.txt";
+
+two.clone(one);
+
+folder fl => "folder";
+
+num n = 1;
+
+str a = "stroka";
+
+list lst[file] { one, two };

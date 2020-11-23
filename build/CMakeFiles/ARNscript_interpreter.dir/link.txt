@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall  -rdynamic CMakeFiles/ARNscript_interpreter.dir/src/interpreter.cpp.o CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o  -o ARNscript_interpreter  libs/FSTool/libFSTool.a libs/WPTool/libWPTool.a 

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/media/armodrey/ARMODISK/projects/ARNscript/libs/WPTool/src/WPTool.cpp
+WPTool.h
+/media/armodrey/ARMODISK/projects/ARNscript/libs/WPTool/src/WPTool.h
+
+/media/armodrey/ARMODISK/projects/ARNscript/libs/WPTool/src/WPTool.h
+string
+-
+vector
+-
+algorithm
+-
+string.h
+/media/armodrey/ARMODISK/projects/ARNscript/libs/WPTool/src/string.h
+
