@@ -1,12 +1,26 @@
-file one => "1.txt";
-file two => "2.txt";
+file one = 1.txt;
+file two = 2.txt;
 
 two.clone(one);
 
-folder fl => "folder";
+folder fl = folder;
 
 num n = 1;
 
-str a = "stroka";
+n = 2;
 
-list lst[file] { one, two };
+str a = "strokaA";
+str b = strokaB;
+
+list[file] lst = { one, two };
+list[file] lst1 = one, two;
+
+file fl = 1.txt
+
+if (fl.empty){
+    fl.delete()
+} 
+
+fl = 2.txt 
+
+fl.create

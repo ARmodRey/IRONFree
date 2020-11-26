@@ -149,32 +149,32 @@ WPTool/fast:
 	$(MAKE) -f libs/WPTool/CMakeFiles/WPTool.dir/build.make libs/WPTool/CMakeFiles/WPTool.dir/build
 .PHONY : WPTool/fast
 
-src/interpreter.o: src/interpreter.cpp.o
+src/decryption.o: src/decryption.cpp.o
 
-.PHONY : src/interpreter.o
+.PHONY : src/decryption.o
 
 # target to build an object file
-src/interpreter.cpp.o:
-	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/interpreter.cpp.o
-.PHONY : src/interpreter.cpp.o
+src/decryption.cpp.o:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o
+.PHONY : src/decryption.cpp.o
 
-src/interpreter.i: src/interpreter.cpp.i
+src/decryption.i: src/decryption.cpp.i
 
-.PHONY : src/interpreter.i
+.PHONY : src/decryption.i
 
 # target to preprocess a source file
-src/interpreter.cpp.i:
-	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/interpreter.cpp.i
-.PHONY : src/interpreter.cpp.i
+src/decryption.cpp.i:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.i
+.PHONY : src/decryption.cpp.i
 
-src/interpreter.s: src/interpreter.cpp.s
+src/decryption.s: src/decryption.cpp.s
 
-.PHONY : src/interpreter.s
+.PHONY : src/decryption.s
 
 # target to generate assembly for a file
-src/interpreter.cpp.s:
-	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/interpreter.cpp.s
-.PHONY : src/interpreter.cpp.s
+src/decryption.cpp.s:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.s
+.PHONY : src/decryption.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -214,9 +214,9 @@ help:
 	@echo "... ARNscript_interpreter"
 	@echo "... FSTool"
 	@echo "... WPTool"
-	@echo "... src/interpreter.o"
-	@echo "... src/interpreter.i"
-	@echo "... src/interpreter.s"
+	@echo "... src/decryption.o"
+	@echo "... src/decryption.i"
+	@echo "... src/decryption.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

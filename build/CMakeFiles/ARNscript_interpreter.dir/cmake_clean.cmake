@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "ARNscript_interpreter"
   "ARNscript_interpreter.pdb"
-  "CMakeFiles/ARNscript_interpreter.dir/src/interpreter.cpp.o"
+  "CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o"
   "CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o"
 )
 
