@@ -57,18 +57,18 @@ include CMakeFiles/ARNscript_interpreter.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ARNscript_interpreter.dir/flags.make
 
-CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o: CMakeFiles/ARNscript_interpreter.dir/flags.make
-CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o: ../src/decryption.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o -c /media/armodrey/ARMODISK/projects/ARNscript/src/decryption.cpp
+CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o: CMakeFiles/ARNscript_interpreter.dir/flags.make
+CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o: ../src/initialization.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o -c /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.cpp
 
-CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/armodrey/ARMODISK/projects/ARNscript/src/decryption.cpp > CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.i
+CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.cpp > CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.i
 
-CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/armodrey/ARMODISK/projects/ARNscript/src/decryption.cpp -o CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.s
+CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.cpp -o CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.s
 
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: CMakeFiles/ARNscript_interpreter.dir/flags.make
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/main.cpp
@@ -83,21 +83,36 @@ CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/armodrey/ARMODISK/projects/ARNscript/src/main.cpp -o CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.s
 
+CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.o: CMakeFiles/ARNscript_interpreter.dir/flags.make
+CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.o: ../src/units.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.o -c /media/armodrey/ARMODISK/projects/ARNscript/src/units.cpp
+
+CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/armodrey/ARMODISK/projects/ARNscript/src/units.cpp > CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.i
+
+CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/armodrey/ARMODISK/projects/ARNscript/src/units.cpp -o CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.s
+
 # Object files for target ARNscript_interpreter
 ARNscript_interpreter_OBJECTS = \
-"CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o" \
-"CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o"
+"CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o" \
+"CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o" \
+"CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.o"
 
 # External object files for target ARNscript_interpreter
 ARNscript_interpreter_EXTERNAL_OBJECTS =
 
-ARNscript_interpreter: CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o
+ARNscript_interpreter: CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o
 ARNscript_interpreter: CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o
+ARNscript_interpreter: CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.o
 ARNscript_interpreter: CMakeFiles/ARNscript_interpreter.dir/build.make
 ARNscript_interpreter: libs/FSTool/libFSTool.a
 ARNscript_interpreter: libs/WPTool/libWPTool.a
 ARNscript_interpreter: CMakeFiles/ARNscript_interpreter.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ARNscript_interpreter"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ARNscript_interpreter"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ARNscript_interpreter.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

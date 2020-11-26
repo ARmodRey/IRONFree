@@ -149,32 +149,32 @@ WPTool/fast:
 	$(MAKE) -f libs/WPTool/CMakeFiles/WPTool.dir/build.make libs/WPTool/CMakeFiles/WPTool.dir/build
 .PHONY : WPTool/fast
 
-src/decryption.o: src/decryption.cpp.o
+src/initialization.o: src/initialization.cpp.o
 
-.PHONY : src/decryption.o
+.PHONY : src/initialization.o
 
 # target to build an object file
-src/decryption.cpp.o:
-	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o
-.PHONY : src/decryption.cpp.o
+src/initialization.cpp.o:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o
+.PHONY : src/initialization.cpp.o
 
-src/decryption.i: src/decryption.cpp.i
+src/initialization.i: src/initialization.cpp.i
 
-.PHONY : src/decryption.i
+.PHONY : src/initialization.i
 
 # target to preprocess a source file
-src/decryption.cpp.i:
-	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.i
-.PHONY : src/decryption.cpp.i
+src/initialization.cpp.i:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.i
+.PHONY : src/initialization.cpp.i
 
-src/decryption.s: src/decryption.cpp.s
+src/initialization.s: src/initialization.cpp.s
 
-.PHONY : src/decryption.s
+.PHONY : src/initialization.s
 
 # target to generate assembly for a file
-src/decryption.cpp.s:
-	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.s
-.PHONY : src/decryption.cpp.s
+src/initialization.cpp.s:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.s
+.PHONY : src/initialization.cpp.s
 
 src/main.o: src/main.cpp.o
 
@@ -203,6 +203,33 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/units.o: src/units.cpp.o
+
+.PHONY : src/units.o
+
+# target to build an object file
+src/units.cpp.o:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.o
+.PHONY : src/units.cpp.o
+
+src/units.i: src/units.cpp.i
+
+.PHONY : src/units.i
+
+# target to preprocess a source file
+src/units.cpp.i:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.i
+.PHONY : src/units.cpp.i
+
+src/units.s: src/units.cpp.s
+
+.PHONY : src/units.s
+
+# target to generate assembly for a file
+src/units.cpp.s:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.s
+.PHONY : src/units.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -214,12 +241,15 @@ help:
 	@echo "... ARNscript_interpreter"
 	@echo "... FSTool"
 	@echo "... WPTool"
-	@echo "... src/decryption.o"
-	@echo "... src/decryption.i"
-	@echo "... src/decryption.s"
+	@echo "... src/initialization.o"
+	@echo "... src/initialization.i"
+	@echo "... src/initialization.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/units.o"
+	@echo "... src/units.i"
+	@echo "... src/units.s"
 .PHONY : help
 
 

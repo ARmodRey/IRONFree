@@ -4,15 +4,16 @@
 #include "WPTool.h"
 #include "units.h"
 
-// проверяе соответствие c типами
-bool conformity_to_all_types(std::string type_name, std::vector<std::string> types); 
+std::string getName(std::string code_str); // получаем имя переменной или функции
+std::string getType(std::string code_str); // получаем тип переменной или функции
 
-// для работы с обьявлением переменных 
-std::string getName(std::string code_str);        // получаем имя 
-std::string getType(std::string code_str);        // получаем тип
-_properties getProperties(std::string code_str);  // получаем свойства
-_variable initVariable(std::string code_str);      // работаем с переменной   
+// для работы с обьявлением переменных
+_properties getProperties(std::string code_str); // получаем свойства
+_variable initVariable(std::string code_str);    // работаем с переменной
 
 // для работы с обьявлением функций
+_function initFunction(std::string code_str);       // работаем с функцией
+_variables getFuncParameters(std::string code_str); // получаем парамеьры функции
+bool regularityFuncParameters(_function func);      // проверка параметров функции
 
 #endif

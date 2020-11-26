@@ -1,8 +1,9 @@
 file(REMOVE_RECURSE
   "ARNscript_interpreter"
   "ARNscript_interpreter.pdb"
-  "CMakeFiles/ARNscript_interpreter.dir/src/decryption.cpp.o"
+  "CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o"
   "CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o"
+  "CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

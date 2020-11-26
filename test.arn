@@ -9,6 +9,8 @@ num n = 1;
 
 n = 2;
 
+file getLastFile();
+
 str a = "strokaA";
 str b = strokaB;
 
