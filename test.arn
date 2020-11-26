@@ -1,28 +1,9 @@
-file one = 1.txt;
-file two = 2.txt;
 
-two.clone(one);
 
-folder fl = folder;
 
-num n = 1;
-
-n = 2;
-
-file getLastFile();
-
-str a = "strokaA";
-str b = strokaB;
-
-list[file] lst = { one, two };
-list[file] lst1 = one, two;
-
-file fl = 1.txt
-
-if (fl.empty){
-    fl.delete()
+list[str] fileNameLIst = { 1.txt, 2.txt, 3.txt };
+for (fileName in fileNameLIst) {
+    file fl = fileName;
+    fl.create;  
 } 
 
-fl = 2.txt 
-
-fl.create
