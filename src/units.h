@@ -7,9 +7,6 @@
 
 typedef std::map<std::string, std::string> _properties;
 
-// проверяе соответствие c типами
-bool conformity_to_all_types(std::string type_name, std::vector<std::string> types); 
-
 struct _baseCodeUnit{
     std::string name;
     std::string type;
@@ -30,11 +27,13 @@ struct _function : _baseCodeUnit{
     int endPos = 0;   // позиция окончания 
 };
 
+typedef std::vector<_function> _functions;
+
 struct _instruction {
     std::string name;
+    std::string condition;
     int startPos = 0; 
     int endPos = 0;
-    std::string endCondition;
     bool end = false;     
 };
 
@@ -43,7 +42,5 @@ struct _codePart{
     std::vector<_instruction> instructions;
     std::vector<_baseCodeUnit*> inter_quene;
 };
-
-
 
 #endif

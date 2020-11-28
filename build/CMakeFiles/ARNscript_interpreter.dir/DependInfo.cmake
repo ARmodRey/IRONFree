@@ -6,6 +6,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/media/armodrey/ARMODISK/projects/ARNscript/src/initialization.cpp" "/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o"
   "/media/armodrey/ARMODISK/projects/ARNscript/src/main.cpp" "/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o"
+  "/media/armodrey/ARMODISK/projects/ARNscript/src/processing.cpp" "/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles/ARNscript_interpreter.dir/src/processing.cpp.o"
+  "/media/armodrey/ARMODISK/projects/ARNscript/src/script.cpp" "/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles/ARNscript_interpreter.dir/src/script.cpp.o"
   "/media/armodrey/ARMODISK/projects/ARNscript/src/units.cpp" "/media/armodrey/ARMODISK/projects/ARNscript/build/CMakeFiles/ARNscript_interpreter.dir/src/units.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

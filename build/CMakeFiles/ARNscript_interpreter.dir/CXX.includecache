@@ -16,10 +16,6 @@ algorithm
 string.h
 ../libs/WPTool/src/string.h
 
-/media/armodrey/ARMODISK/projects/ARNscript/src/initialization.cpp
-initialization.h
-/media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
-
 /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
 WPTool.h
 /media/armodrey/ARMODISK/projects/ARNscript/src/WPTool.h
@@ -31,10 +27,6 @@ initialization.h
 /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
 iostream
 -
-
-/media/armodrey/ARMODISK/projects/ARNscript/src/units.cpp
-units.h
-/media/armodrey/ARMODISK/projects/ARNscript/src/units.h
 
 /media/armodrey/ARMODISK/projects/ARNscript/src/units.h
 string

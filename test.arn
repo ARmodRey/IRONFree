@@ -1,9 +1,31 @@
+use(file.arn);
 
+num a = 2;
 
+proc createFiles(list[str] flList) {
+    for(fileName in flLIst){
+        file fl = fileName;
+        if (fl.exists() = false){
+            fl.create();  
+        } 
+    } 
+}
 
-list[str] fileNameLIst = { 1.txt, 2.txt, 3.txt };
-for (fileName in fileNameLIst) {
-    file fl = fileName;
-    fl.create;  
-} 
+proc deleteFiles(list[str] flList) {
+    for(fileName in flLIst){
+        file fl = fileName;
+        if(fl.exists() = true){
+            fl.delete();  
+        } 
+    } 
+}
 
+list[str] fileNameLIst = { 
+    1.txt, 
+    2.txt, 
+    3.txt 
+};
+
+createFiles(fileNameLIst);
+
+deleteFiles(fileNameLIst);

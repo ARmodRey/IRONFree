@@ -1,9 +1,22 @@
 #include "initialization.h"
 
+bool conformity_to_all_types(std::string type,  std::vector<std::string> types){
+    WPTool::string_content type_str(type, "[]");
+    if(type_str.get_size() > 1 && type_str[0] == "list"){
+        return conformity_to_all_types(getStringBetween(type,'[',']'), types);
+    }
+    for(std::size_t i = 0; i < types.size(); i++){
+        if(type == types[i]){
+            return true;
+        }
+    }
+    return false;
+}
+
 std::string getStringBetween(std::string source, char begin, char end){
     std::string content;
-    std::size_t * start_pos = new std::size_t(source.find(begin));
-    std::size_t * end_pos = new std::size_t(source.find(end));
+    std::size_t * start_pos = new std::size_t(source.find_first_of(begin));
+    std::size_t * end_pos = new std::size_t(source.find_last_of(end));
     content = source.substr(*start_pos + 1, (*end_pos - *start_pos) - 1);
     return content;
 }
@@ -106,7 +119,7 @@ _function initFunction(std::string code_str){
     return result;
 }
 
-std::string getEndCondition(std::string code_str){
+std::string getCondition(std::string code_str){
     return getStringBetween(code_str,'(',')');
 }
 

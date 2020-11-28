@@ -10,6 +10,9 @@
 */ 
 std::string getStringBetween(std::string source, char begin, char end = '\0'); 
 
+// проверяе соответствие c типами
+bool conformity_to_all_types(std::string type_name, std::vector<std::string> types); 
+
 // функции для получения общих для переменных и функций данных 
 _baseCodeUnit getCodeUnit(std::string code_str); // получаем тип данных и имя
 std::string getName(std::string code_str); // получаем имя переменной или функции
@@ -24,8 +27,8 @@ _function initFunction(std::string code_str);       // работаем с фу�
 _variables getFuncParameters(std::string code_str); // получаем парамеьры функции
 bool regularityFuncParameters(_function func);      // проверка параметров функции
 
-// для работы с циклами 
-std::string getEndCondition(std::string code_str); // получаем условие окончания инструкция
+// для работы с циклами и конструкциями ветвления 
+std::string getCondition(std::string code_str);       // получаем условие окончания инструкция
 std::string getInstructionName(std::string code_str); // получаем имя инструкция
 
 #endif

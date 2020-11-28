@@ -203,6 +203,60 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/processing.o: src/processing.cpp.o
+
+.PHONY : src/processing.o
+
+# target to build an object file
+src/processing.cpp.o:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/processing.cpp.o
+.PHONY : src/processing.cpp.o
+
+src/processing.i: src/processing.cpp.i
+
+.PHONY : src/processing.i
+
+# target to preprocess a source file
+src/processing.cpp.i:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/processing.cpp.i
+.PHONY : src/processing.cpp.i
+
+src/processing.s: src/processing.cpp.s
+
+.PHONY : src/processing.s
+
+# target to generate assembly for a file
+src/processing.cpp.s:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/processing.cpp.s
+.PHONY : src/processing.cpp.s
+
+src/script.o: src/script.cpp.o
+
+.PHONY : src/script.o
+
+# target to build an object file
+src/script.cpp.o:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/script.cpp.o
+.PHONY : src/script.cpp.o
+
+src/script.i: src/script.cpp.i
+
+.PHONY : src/script.i
+
+# target to preprocess a source file
+src/script.cpp.i:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/script.cpp.i
+.PHONY : src/script.cpp.i
+
+src/script.s: src/script.cpp.s
+
+.PHONY : src/script.s
+
+# target to generate assembly for a file
+src/script.cpp.s:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/script.cpp.s
+.PHONY : src/script.cpp.s
+
 src/units.o: src/units.cpp.o
 
 .PHONY : src/units.o
@@ -247,6 +301,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/processing.o"
+	@echo "... src/processing.i"
+	@echo "... src/processing.s"
+	@echo "... src/script.o"
+	@echo "... src/script.i"
+	@echo "... src/script.s"
 	@echo "... src/units.o"
 	@echo "... src/units.i"
 	@echo "... src/units.s"
