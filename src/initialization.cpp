@@ -5,8 +5,8 @@ bool conformity_to_all_types(std::string type,  std::vector<std::string> types){
     if(type_str.get_size() > 1 && type_str[0] == "list"){
         return conformity_to_all_types(getStringBetween(type,'[',']'), types);
     }
-    for(std::size_t i = 0; i < types.size(); i++){
-        if(type == types[i]){
+    for(WPTool::string_vect::iterator iter = types.begin(); iter != types.end() ; ++iter){
+        if(type == *iter){
             return true;
         }
     }
@@ -34,6 +34,9 @@ std::string getType(std::string code_str){
 
 std::string getName(std::string code_str){
     WPTool::string_content str(code_str," \t[]()");
+    if(str.get_size() == 0){
+        throw "Invalid variable declaration";
+    }
     if(str[0] == "list" && str.get_size() >= 3){
         return str[2];
     }

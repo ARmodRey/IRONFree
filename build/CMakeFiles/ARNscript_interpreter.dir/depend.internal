@@ -6,14 +6,33 @@ CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.o
  /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.cpp
  /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
  /media/armodrey/ARMODISK/projects/ARNscript/src/units.h
+CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.o
+ ../libs/FSTool/src/FSTbase.h
+ ../libs/FSTool/src/FSTool.h
+ ../libs/FSTool/src/FSexception.h
+ ../libs/FSTool/src/file.h
+ ../libs/FSTool/src/folder.h
+ ../libs/WPTool/src/WPTool.h
+ /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
+ /media/armodrey/ARMODISK/projects/ARNscript/src/interpretation.cpp
+ /media/armodrey/ARMODISK/projects/ARNscript/src/interpretation.h
+ /media/armodrey/ARMODISK/projects/ARNscript/src/units.h
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o
  ../libs/WPTool/src/WPTool.h
  /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
  /media/armodrey/ARMODISK/projects/ARNscript/src/main.cpp
  /media/armodrey/ARMODISK/projects/ARNscript/src/units.h
 CMakeFiles/ARNscript_interpreter.dir/src/processing.cpp.o
+ ../libs/FSTool/src/FSTbase.h
+ ../libs/FSTool/src/FSTool.h
+ ../libs/FSTool/src/FSexception.h
+ ../libs/FSTool/src/file.h
+ ../libs/FSTool/src/folder.h
+ ../libs/WPTool/src/WPTool.h
+ /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
  /media/armodrey/ARMODISK/projects/ARNscript/src/processing.cpp
  /media/armodrey/ARMODISK/projects/ARNscript/src/processing.h
+ /media/armodrey/ARMODISK/projects/ARNscript/src/units.h
 CMakeFiles/ARNscript_interpreter.dir/src/script.cpp.o
  ../libs/FSTool/src/FSTbase.h
  ../libs/FSTool/src/FSTool.h
@@ -22,6 +41,8 @@ CMakeFiles/ARNscript_interpreter.dir/src/script.cpp.o
  ../libs/FSTool/src/folder.h
  ../libs/WPTool/src/WPTool.h
  /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
+ /media/armodrey/ARMODISK/projects/ARNscript/src/interpretation.h
+ /media/armodrey/ARMODISK/projects/ARNscript/src/processing.h
  /media/armodrey/ARMODISK/projects/ARNscript/src/script.cpp
  /media/armodrey/ARMODISK/projects/ARNscript/src/script.h
  /media/armodrey/ARMODISK/projects/ARNscript/src/units.h

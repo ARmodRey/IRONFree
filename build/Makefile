@@ -176,6 +176,33 @@ src/initialization.cpp.s:
 	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/initialization.cpp.s
 .PHONY : src/initialization.cpp.s
 
+src/interpretation.o: src/interpretation.cpp.o
+
+.PHONY : src/interpretation.o
+
+# target to build an object file
+src/interpretation.cpp.o:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.o
+.PHONY : src/interpretation.cpp.o
+
+src/interpretation.i: src/interpretation.cpp.i
+
+.PHONY : src/interpretation.i
+
+# target to preprocess a source file
+src/interpretation.cpp.i:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.i
+.PHONY : src/interpretation.cpp.i
+
+src/interpretation.s: src/interpretation.cpp.s
+
+.PHONY : src/interpretation.s
+
+# target to generate assembly for a file
+src/interpretation.cpp.s:
+	$(MAKE) -f CMakeFiles/ARNscript_interpreter.dir/build.make CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.s
+.PHONY : src/interpretation.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -298,6 +325,9 @@ help:
 	@echo "... src/initialization.o"
 	@echo "... src/initialization.i"
 	@echo "... src/initialization.s"
+	@echo "... src/interpretation.o"
+	@echo "... src/interpretation.i"
+	@echo "... src/interpretation.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

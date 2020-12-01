@@ -11,10 +11,15 @@ enum  _action {
 };
 
 enum _init {
-    is_var = 0, is_func
+    _var = 0, _func
+};
+
+enum _empl{
+    _ins = 0, _use_func, _add_val
 };
 
 _action getActionType(std::string codeLIne, WPTool::string_vect _types);
 _init getInitType(std::string codeLIne);
+_empl getEmplType(std::string codeLine);
 
 #endif
