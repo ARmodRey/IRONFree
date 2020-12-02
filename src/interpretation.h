@@ -15,7 +15,7 @@ void varInitInterpretation(std::string source, WPTool::string_vect types, _varia
 void varInitErr(_variable var, _variables &varList);
 
 // итерпритация инициализации переменной типа num
-void numVarInitIterpr(_variable &var, _variables &varList);
+void numVarInitIterpr(_variable &var, _variables varList);
 
 // интерпритация обьявления функции 
 void funcInitInterpretation(std::string source, WPTool::string_vect types, _functions &funcList);

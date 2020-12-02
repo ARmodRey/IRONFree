@@ -15,11 +15,19 @@ CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.o: ../libs/WPTool/sr
 CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.o: ../src/initialization.h
 CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.o: ../src/interpretation.cpp
 CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.o: ../src/interpretation.h
+CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.o: ../src/processing.h
 CMakeFiles/ARNscript_interpreter.dir/src/interpretation.cpp.o: ../src/units.h
 
+CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../libs/FSTool/src/FSTbase.h
+CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../libs/FSTool/src/FSTool.h
+CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../libs/FSTool/src/FSexception.h
+CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../libs/FSTool/src/file.h
+CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../libs/FSTool/src/folder.h
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../libs/WPTool/src/WPTool.h
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/initialization.h
+CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/interpretation.h
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/main.cpp
+CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/processing.h
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/units.h
 
 CMakeFiles/ARNscript_interpreter.dir/src/processing.cpp.o: ../libs/FSTool/src/FSTbase.h

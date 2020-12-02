@@ -3,14 +3,14 @@
 int findVarFromName(std::string varName, _variables varList){
     for(_variables::iterator _varIT = varList.begin(); _varIT != varList.end(); ++_varIT){
         if(_varIT->name == varName ){
-            return std::distance(varList.begin(), _varIT)-1;
+            return std::distance(varList.begin(), _varIT);
         }
     }
     return -1;
 }
 
 void varInitErr(_variable var, _variables & varList){
-    if(findVarFromName(var.name,varList)){
+    if(findVarFromName(var.name,varList) != -1){
         throw "same variable names";
     }
 }
@@ -30,33 +30,35 @@ void varInitInterpretation(std::string source, WPTool::string_vect types, _varia
     catch(const char * _error_message){
         printf("%s\n", _error_message);
     }
+    catch(std::string _error_message){
+        printf("%s\n", _error_message.c_str());
+    }
 }
 
-void numVarInitIterpr(_variable &var, _variables &varList){
+void numVarInitIterpr(_variable &var, _variables varList){
     if(var.properties.size() == 1 ){
-        if(!WPTool::is_digit(var.properties["object0"])){
-            throw var.properties["object0"] +  "--> is not digit"; 
+        if(findVarFromName(var.properties["object0"],varList) != -1 ){
+            std::string * name = new std::string(var.name);
+            var = varList[findVarFromName(var.properties["object0"],varList)];
+            var.name = *name;
+            delete name;
         }
-        // else if (getEmplType(var.properties["object0"]) == _use_func){
-        //     std::string * temp = new std::string(var.properties["object0"]);
-        //     var.properties.erase("object0");
-        //     var.properties["object0"] = getFuncResult(*temp);
-        // }
-        else if(findVarFromName(var.name,varList) != -1 ){
-            var = varList[findVarFromName(var.name,varList)];
-        }
-        else if( var.properties["object0"].find_first_of("+-*/") != std::string::npos){
+        else if(var.properties["object0"].find_first_of("+-*/") != std::string::npos){
             WPTool::string_content nums(var.properties["object0"],"+-*/");
-            WPTool::string_content chars(var.properties["object0"],"1234567890.,");
+            WPTool::string_content chars(var.properties["object0"],"1234567890.,abcdefghijklmnopqrstuvwxyz");
             int value = 0;
-            for(int i = 0; i < nums.get_size(); i++){
-                if (findVarFromName(nums[i],varList) != -1 ){
-                    nums.edit(i,varList[findVarFromName(var.name,varList)].properties["object0"]);
+            if (findVarFromName(nums[0],varList) != -1){
+                nums.edit(0,varList[findVarFromName(nums[0],varList)].properties["object0"]);
+            }
+            value += std::stof(nums[0].c_str()); 
+            for(int i = 1; i < nums.get_size(); i++){
+                if (findVarFromName(nums[i],varList) != -1){
+                    nums.edit(i,varList[findVarFromName(nums[i],varList)].properties["object0"]);
                 }
-                else{
-                    throw nums[i] + "--> is not digit, and not is init var"; 
+                if (!WPTool::is_digit(nums[i])){
+                    throw nums[i] + " --> is not variable"; 
                 }
-                switch (chars[i][0]){
+                switch (chars[i-1][0]){
                 case '+':
                     value += std::stof(nums[i].c_str());   
                     break;
@@ -77,9 +79,9 @@ void numVarInitIterpr(_variable &var, _variables &varList){
             var.properties.erase("object0");
             var.properties["object0"] = std::to_string(value);
         }
-    }
-    else if( var.properties.size() > 1 ){
-        throw "wrong number of parameters";
+        else if(!WPTool::is_digit(var.properties["object0"])){
+            throw var.properties["object0"] +  " --> is not digit"; 
+        }
     }
 }
 
