@@ -44,45 +44,55 @@ void numVarInitIterpr(_variable &var, _variables varList){
             delete name;
         }
         else if(var.properties["object0"].find_first_of("+-*/") != std::string::npos){
-            WPTool::string_content nums(var.properties["object0"],"+-*/");
-            WPTool::string_content chars(var.properties["object0"],"1234567890.,abcdefghijklmnopqrstuvwxyz");
-            int value = 0;
-            if (findVarFromName(nums[0],varList) != -1){
-                nums.edit(0,varList[findVarFromName(nums[0],varList)].properties["object0"]);
-            }
-            value += std::stof(nums[0].c_str()); 
-            for(int i = 1; i < nums.get_size(); i++){
-                if (findVarFromName(nums[i],varList) != -1){
-                    nums.edit(i,varList[findVarFromName(nums[i],varList)].properties["object0"]);
-                }
-                if (!WPTool::is_digit(nums[i])){
-                    throw nums[i] + " --> is not variable"; 
-                }
-                switch (chars[i-1][0]){
-                case '+':
-                    value += std::stof(nums[i].c_str());   
-                    break;
-                case '-':
-                    value -= std::stof(nums[i].c_str());   
-                    break;
-                case '*':
-                    value *= std::stof(nums[i].c_str());   
-                    break;
-                case '/':
-                    value /= std::stof(nums[i].c_str());   
-                    break;
-                default:
-                    throw "unknown character or variable";
-                    break;
-                }
-            }
+            double expRes = getResultOfExp(var.properties["object0"], varList);
+            std::string objStr = std::to_string(expRes);
+            size_t zeroPosStart = objStr.find_first_of("0",objStr.find_first_of(".")) - 1;
             var.properties.erase("object0");
-            var.properties["object0"] = std::to_string(value);
+            var.properties["object0"] = objStr.substr(0,objStr.size() - zeroPosStart);
         }
         else if(!WPTool::is_digit(var.properties["object0"])){
             throw var.properties["object0"] +  " --> is not digit"; 
         }
     }
+    if(var.properties.size() > 1 ){
+        throw "wrong number of parameters"
+    }
+}
+
+double getResultOfExp(std::string exp, _variables varList){
+    WPTool::string_content nums(exp,"+-*/");
+    WPTool::string_content chars(exp,"1234567890.,abcdefghijklmnopqrstuvwxyz");
+    double value = 0;
+    if(findVarFromName(nums[0],varList) != -1){
+        nums.edit(0,varList[findVarFromName(nums[0],varList)].properties["object0"]);
+    }
+    value += std::stof(nums[0].c_str()); 
+    for(int i = 1; i < nums.get_size(); i++){
+        if (findVarFromName(nums[i],varList) != -1){
+            nums.edit(i,varList[findVarFromName(nums[i],varList)].properties["object0"]);
+        }
+        if (!WPTool::is_digit(nums[i])){
+            throw nums[i] + " --> is not variable"; 
+        }
+        switch (chars[i-1][0]){
+        case '+':
+            value += std::stof(nums[i].c_str());   
+            break;
+        case '-':
+            value -= std::stof(nums[i].c_str());   
+            break;
+        case '*':
+            value *= std::stof(nums[i].c_str());   
+            break;
+        case '/':
+            value /= std::stof(nums[i].c_str());   
+            break;
+        default:
+            throw "unknown character or variable";
+            break;
+        }
+    }
+    return value;
 }
 
 void funcInitInterpretation(std::string source, WPTool::string_vect types, _functions &funcList){

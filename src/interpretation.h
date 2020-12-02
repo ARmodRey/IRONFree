@@ -1,6 +1,7 @@
 #ifndef __INTERPRT__H__
 #define __INTERPRT__H__
 
+#include "math.h"
 #include "units.h"
 #include "initialization.h"
 #include "processing.h"
@@ -16,6 +17,9 @@ void varInitErr(_variable var, _variables &varList);
 
 // итерпритация инициализации переменной типа num
 void numVarInitIterpr(_variable &var, _variables varList);
+
+// вычисленние значения из выражения 
+double getResultOfExp(std::string exp, _variables varList);
 
 // интерпритация обьявления функции 
 void funcInitInterpretation(std::string source, WPTool::string_vect types, _functions &funcList);

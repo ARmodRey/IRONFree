@@ -74,21 +74,19 @@ WPTool.h
 units.h
 /media/armodrey/ARMODISK/projects/ARNscript/src/units.h
 
+/media/armodrey/ARMODISK/projects/ARNscript/src/interpretation.cpp
+interpretation.h
 /media/armodrey/ARMODISK/projects/ARNscript/src/interpretation.h
+
+/media/armodrey/ARMODISK/projects/ARNscript/src/interpretation.h
+math.h
+/media/armodrey/ARMODISK/projects/ARNscript/src/math.h
 units.h
 /media/armodrey/ARMODISK/projects/ARNscript/src/units.h
 initialization.h
 /media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
 processing.h
 /media/armodrey/ARMODISK/projects/ARNscript/src/processing.h
-
-/media/armodrey/ARMODISK/projects/ARNscript/src/main.cpp
-initialization.h
-/media/armodrey/ARMODISK/projects/ARNscript/src/initialization.h
-interpretation.h
-/media/armodrey/ARMODISK/projects/ARNscript/src/interpretation.h
-iostream
--
 
 /media/armodrey/ARMODISK/projects/ARNscript/src/processing.h
 units.h
