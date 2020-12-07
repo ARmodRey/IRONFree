@@ -17,12 +17,16 @@ private:
     _functions initFuncs;         // инициализированные функции
     _variables initVars;          // инициализированные переменные
     FSTool::file *_source;        // файл с исходным кодом
-    std::string getContentBetween(char start, char end, int & filePos); //получение данных из файла между позициями
+    std::string getContent(int & startPos); //получение данных из файла между позициями
 public: 
     script(std::string script_file);
     void runScript();
     bool cheskScript();
     ~script();
+
+    // _________DEBUG__________
+    _functions get_initFuncs() { return initFuncs; }
+    _variables get_initVars() { return initVars; } 
 };
 
 #endif

@@ -1,50 +1,80 @@
 #include "interpretation.h"
 
-int findVarFromName(std::string varName, _variables varList){
-    for(_variables::iterator _varIT = varList.begin(); _varIT != varList.end(); ++_varIT){
+interpreter::interpreter(std::string source, _variables varList, _functions funcList){
+    this->source = source;
+    this->varList = varList;
+    this->funcList = funcList;
+}
+
+void interpreter::update(_variables &varList, _functions &funcList){
+    varList = this->varList;
+    funcList = this->funcList;
+}
+
+void interpreter::setTypeOfInterpritation(_action action, int actionType){
+    this->actionType = actionType;
+    interpT = action;
+}
+
+void interpreter::start(){
+    if(interpT == is_init){
+        if(actionType == _var){
+            varInitInterpretation(this->source);
+        }
+        if(actionType == _func){
+            funcInitInterpretation(this->source);
+        }
+    }
+    if(interpT == is_empl){
+    
+    }
+    if(interpT == is_use){
+    
+    }
+}
+
+int interpreter::findVarFromName(std::string varName){
+    for(_variables::iterator _varIT = this->varList.begin(); _varIT != this->varList.end(); ++_varIT){
         if(_varIT->name == varName ){
-            return std::distance(varList.begin(), _varIT);
+            return std::distance(this->varList.begin(), _varIT);
         }
     }
     return -1;
 }
 
-void varInitErr(_variable var, _variables & varList){
-    if(findVarFromName(var.name,varList) != -1){
+void interpreter::varInitErr(_variable var){
+    if(findVarFromName(var.name) != -1){
         throw "same variable names";
     }
-}
-
-void varInitInterpretation(std::string source, WPTool::string_vect types, _variables &varList){
-    try{ 
-        _variable var(initVariable(source));
-        varInitErr(var,varList);
-        if(!conformity_to_all_types(var.type,types)){
-            throw "error var type";
+    for(_functions::iterator _funcIT = this->funcList.begin(); _funcIT != this->funcList.end(); ++_funcIT){
+        if(_funcIT->name == var.name){
+            throw "function with the same name has already been declared";
         }
-        if(var.type == "num"){ // инициализация переменной типа num
-            numVarInitIterpr(var,varList); // вносим переменную в память и проверяем ее значение 
-        }
-        varList.push_back(var);   
     }
-    catch(const char * _error_message){
-        printf("%s\n", _error_message);
-    }
-    catch(std::string _error_message){
-        printf("%s\n", _error_message.c_str());
+    if(!conformity_to_all_types(var.type,_types)){
+        throw "error var type";
     }
 }
 
-void numVarInitIterpr(_variable &var, _variables varList){
+void interpreter::varInitInterpretation(std::string source){
+    _variable var(initVariable(source));
+    varInitErr(var);
+    if(var.type == "num"){ // инициализация переменной типа num
+        numVarInitIterpr(var); // вносим переменную в память и проверяем ее значение 
+    }
+    varList.push_back(var);   
+}
+
+void interpreter::numVarInitIterpr(_variable &var){
     if(var.properties.size() == 1 ){
-        if(findVarFromName(var.properties["object0"],varList) != -1 ){
+        if(findVarFromName(var.properties["object0"]) != -1 ){
             std::string * name = new std::string(var.name);
-            var = varList[findVarFromName(var.properties["object0"],varList)];
+            var = varList[findVarFromName(var.properties["object0"])];
             var.name = *name;
             delete name;
         }
         else if(var.properties["object0"].find_first_of("+-*/") != std::string::npos){
-            double expRes = getResultOfExp(var.properties["object0"], varList);
+            double expRes = getResultOfExp(var.properties["object0"]);
             std::string objStr = std::to_string(expRes);
             size_t zeroPosStart = objStr.find_first_of("0",objStr.find_first_of(".")) - 1;
             var.properties.erase("object0");
@@ -55,22 +85,25 @@ void numVarInitIterpr(_variable &var, _variables varList){
         }
     }
     if(var.properties.size() > 1 ){
-        throw "wrong number of parameters"
+        throw "wrong number of parameters";
     }
 }
 
-double getResultOfExp(std::string exp, _variables varList){
+double interpreter::getResultOfExp(std::string exp){
     WPTool::string_content nums(exp,"+-*/");
     WPTool::string_content chars(exp,"1234567890.,abcdefghijklmnopqrstuvwxyz");
     double value = 0;
-    if(findVarFromName(nums[0],varList) != -1){
-        nums.edit(0,varList[findVarFromName(nums[0],varList)].properties["object0"]);
+    if(findVarFromName(nums[0]) != -1){
+        nums.edit(0,varList[findVarFromName(nums[0])].properties["object0"]);
     }
     value += std::stof(nums[0].c_str()); 
     for(int i = 1; i < nums.get_size(); i++){
-        if (findVarFromName(nums[i],varList) != -1){
-            nums.edit(i,varList[findVarFromName(nums[i],varList)].properties["object0"]);
+        if (findVarFromName(nums[i]) != -1){
+            nums.edit(i,varList[findVarFromName(nums[i])].properties["object0"]);
         }
+        // if (getEmplType(nums[i]) == _use_func){
+        //     nums.edit(i,getFuncResult(nums[i]));
+        // } 
         if (!WPTool::is_digit(nums[i])){
             throw nums[i] + " --> is not variable"; 
         }
@@ -95,14 +128,29 @@ double getResultOfExp(std::string exp, _variables varList){
     return value;
 }
 
-void funcInitInterpretation(std::string source, WPTool::string_vect types, _functions &funcList){
-    try{
-        _function func(initFunction(source));
-        if(!conformity_to_all_types(func.type,types)){
-            throw "error function type";
+void interpreter::funcInitInterpretation(std::string source){
+    _function func(initFunction(source));
+    funcInitErr(func);
+    funcList.push_back(func);
+}
+
+void interpreter::funcInitErr(_function func){
+    if(!conformity_to_all_types(func.type,_types)){
+        throw "error function type";
+    }
+    if(findFuncFromName(func.name) != -1){
+        throw "same function names";
+    }
+    if(findVarFromName(func.name) != -1){
+        throw "variable with the same name has already been declared";
+    }   
+}
+
+int interpreter::findFuncFromName(std::string funcName){
+    for(_functions::iterator _funcIT = this->funcList.begin(); _funcIT != this->funcList.end(); ++_funcIT){
+        if(_funcIT->name == funcName){
+            return std::distance(funcList.begin(), _funcIT);
         }
     }
-    catch(const char * _error_message){
-        printf("%s\n", _error_message);
-    }
+    return -1;
 }

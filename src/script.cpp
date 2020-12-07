@@ -13,59 +13,67 @@ bool script::cheskScript(){
 }
 
 void script::runScript(){
-    // for(int i = 0; i < _source->get_info().size; i++){
-    //     std::string sourceLine = _source->get(i);
-    //     if(sourceLine.empty()){
-    //         continue;
-    //     }
-    //     WPTool::string_content scriptLine(sourceLine, ";");
-    //     if(scriptLine.get_size() > 0){
-    //         for(int j = 0; j < scriptLine.get_size(); j++){
-    //             if(getActionType(scriptLine[j], _types) == is_init){
-    //                 if(getInitType(scriptLine[j]) == _var){
-    //                     if(scriptLine.have("{") && !scriptLine.have("}")){
-    //                         std::string codeContent = scriptLine[j] + getContentBetween('{', '}', i);
-    //                         varInitInterpretation(codeContent, _types,initVars);
-    //                     }
-    //                     else{
-    //                         varInitInterpretation(scriptLine[j],_types,initVars);
-    //                     }
-    //                 }
-    //                 if(getInitType(scriptLine[i]) == _func){
-    //                     if(scriptLine.have("{") && !scriptLine.have("}")){
-    //                         std::string codeContent = scriptLine[j] + getContentBetween('{', '}', i);
-    //                         funcInitInterpretation(codeContent, _types,initFuncs);
-    //                     }
-    //                     else{
-    //                         funcInitInterpretation(scriptLine[j],_types,initFuncs);
-    //                     }
-    //                 }
-    //             }
-    //             if(getActionType(scriptLine[i], _types) == is_empl){
-                    
-    //             }
-    //             if(getActionType(scriptLine[i], _types) == is_use){
-                    
-    //             }
-    //         }
-    //     }
-    // }
+    for(int i = 0; i < _source->get_info().lines; i++){
+        std::string sourceLine = _source->get(i);
+        if(sourceLine.empty()){
+            continue;
+        }
+        WPTool::string_content codeStr(sourceLine,";");
+        int lineAction = getActionType(sourceLine,_types);
+        interpreter * intprLine;
+        try{
+            if(lineAction == is_init){
+                int initType = getInitType(sourceLine);
+                int filePos = i;
+                if(codeStr.have("{") && !codeStr.have("}")){
+                    intprLine = new interpreter(sourceLine + getContent(i), initVars, initFuncs);
+                }
+                else{
+                    intprLine = new interpreter(sourceLine, initVars, initFuncs);
+                }
+                intprLine->setTypeOfInterpritation(is_init,initType);
+                intprLine->start();
+                intprLine->update(initVars,initFuncs);
+                if(initType == _func){
+                    initFuncs[initFuncs.size() - 1].startPos = filePos;
+                    initFuncs[initFuncs.size() - 1].endPos = i;
+                }
+                delete intprLine;
+            }
+        }
+        catch(const char * _error_message){
+            printf("line %i:%s\n", i,  _error_message);
+        }    
+        catch(std::string _error_message){
+            printf("line %i:%s\n", i, _error_message.c_str());
+        }
+    }
 }
 
-std::string script::getContentBetween(char start, char end, int & filePos){
+std::string script::getContent(int & filePos){
     std::string result;
-    int endStrPos = _source->find(std::to_string(end),filePos); // получение позиции с конечным символом
-    while (true){
-        if(_source->find(std::to_string(start),filePos,endStrPos) != -1){
-            endStrPos = _source->find(std::to_string(end),endStrPos + 1);
-        }
-        else{
+    int openChars = 0;
+    int *tempOpen = new int;
+    int *tempClose = new int;
+    int endStrPos;
+    *tempOpen = _source->find("{",filePos); 
+    *tempClose = _source->find("}",filePos);
+    while (*tempOpen < *tempClose){
+        openChars++;
+        *tempClose = _source->find("}",filePos); // получение позиции с конечным символом    
+        *tempOpen = _source->find("{",*tempOpen + 1);// получение позиции с начальным символом
+        if(*tempOpen == -1){
             break;
         }
+    }
+    delete tempOpen;
+    delete tempClose;
+    for(int i = 0; i != openChars; i++){
+        endStrPos = _source->find("}",filePos); // получение позиции с конечным символом
     }
     for(int i = filePos + 1; i < endStrPos; i++){
         result += _source->get(i);  
     }
-    filePos = endStrPos;
+    filePos = endStrPos + 1;
     return result;
 }

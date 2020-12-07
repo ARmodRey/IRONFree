@@ -20,18 +20,6 @@ algorithm
 string.h
 /media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/string.h
 
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/FSTool.cpp
-FSTool.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/FSTool.h
-
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/FSTool.h
-FSTbase.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/FSTbase.h
-file.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/file.h
-folder.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/folder.h
-
 /media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/FSexception.h
 string
 -
@@ -46,27 +34,5 @@ FSTbase.h
 FSexception.h
 /media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/FSexception.h
 fstream
--
-
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/folder.cpp
-folder.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/folder.h
-
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/folder.h
-unistd.h
--
-dirent.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/dirent.h
-direct.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/direct.h
-io.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/io.h
-dos.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/dos.h
-FSTbase.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/FSTbase.h
-FSexception.h
-/media/armodrey/ARMODISK/projects/ARNscript/libs/FSTool/src/FSexception.h
-vector
 -
 

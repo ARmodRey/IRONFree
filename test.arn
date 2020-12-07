@@ -1,5 +1,6 @@
 use(file.arn);
 
+num b = size(file.arn);
 num a = 2+11;
 
 proc createFiles(list[str] flList) {

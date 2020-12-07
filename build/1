@@ -1,0 +1,25 @@
+num b = 1;
+num a = b+11;
+
+list[num] nums = {1,2,3}
+
+proc createFiles(list[str] flList) {
+    for(fileName in flLIst){
+        file fl = fileName;
+        if (fl.exists() = false){
+            fl.create();  
+        } 
+        if {
+
+        }
+    } 
+}
+
+proc createFiles1(list[str] flList) {
+    for(fileName in flLIst){
+        file fl = fileName;
+        if (fl.exists() = false){
+            fl.create();  
+        } 
+    } 
+}

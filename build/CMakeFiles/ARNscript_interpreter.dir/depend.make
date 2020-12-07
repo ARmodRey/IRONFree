@@ -28,6 +28,7 @@ CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/initialization.h
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/interpretation.h
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/processing.h
+CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/script.h
 CMakeFiles/ARNscript_interpreter.dir/src/main.cpp.o: ../src/units.h
 
 CMakeFiles/ARNscript_interpreter.dir/src/processing.cpp.o: ../libs/FSTool/src/FSTbase.h

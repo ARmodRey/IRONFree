@@ -55,7 +55,7 @@ _properties getProperties(std::string code_str){
     std::size_t * found = new std::size_t(code_str.find_first_of("="));
     if(*found != std::string::npos){
         std::string * prop_string = new std::string(getStringBetween(code_str,'='));
-        WPTool::string_content str(*prop_string, "\",{} ");
+        WPTool::string_content str(*prop_string, "\",{};\t ");
         if(str.get_size() >= 1){
             std::string * count_obj = new std::string;
             for (int i = 0; i < str.get_size(); i++){

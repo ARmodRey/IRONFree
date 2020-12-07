@@ -6,25 +6,31 @@
 #include "initialization.h"
 #include "processing.h"
 
-// поиск переменной по названию 
-int findVarFromName(std::string varName, _variables varList);
+// клас для интерпритации части кода 
+class interpreter{
+private:
+    int findVarFromName(std::string varName);        // поиск переменной по названию
+    int findFuncFromName(std::string funcName);
+    void varInitInterpretation(std::string source);  // интерпритация инициализация переменной
+    void varInitErr(_variable var);                  // проверка на ошибки в инициализации
+    void funcInitErr(_function func);                // проверка на ошибки в инициализации 
+    void numVarInitIterpr(_variable &var);           // проверка на ошибки в инициализации
+    double getResultOfExp(std::string exp);          // вычисленние значения из выражения
+    void funcInitInterpretation(std::string source); // интерпритация обьявления функции
+    std::string getFuncResult(std::string source);   // получение результата функции
+    _variables varList;                              // инициализированные переменные
+    _functions funcList;                             // инициализированные функции
+    std::string source;                              // код для интерпритации
+    WPTool::string_vect _types { "file", "folder", "str", "num", "proc"}; // типы данных
+    _action interpT;     // тип интерпритации
+    int actionType;
+    public:
+    interpreter(std::string source, _variables varList, _functions funcList);
+    void update(_variables &varList, _functions &funcList);
+    void setTypeOfInterpritation(_action action, int actionType);
+    void start();
+};
 
-// интерпритация инициализация переменной
-void varInitInterpretation(std::string source, WPTool::string_vect types, _variables &varList); 
 
-// проверка на ошибки в инициализации 
-void varInitErr(_variable var, _variables &varList);
-
-// итерпритация инициализации переменной типа num
-void numVarInitIterpr(_variable &var, _variables varList);
-
-// вычисленние значения из выражения 
-double getResultOfExp(std::string exp, _variables varList);
-
-// интерпритация обьявления функции 
-void funcInitInterpretation(std::string source, WPTool::string_vect types, _functions &funcList);
-
-// получение результата функции
-std::string getFuncResult(std::string source, _functions &funcList);
 
 #endif 

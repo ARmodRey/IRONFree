@@ -15,10 +15,10 @@ enum _init {
 };
 
 enum _empl{
-    _ins = 0, _use_func, _add_val
+    _use_var = 0, _use_func, _add_val
 };
 
-_action getActionType(std::string codeLIne, WPTool::string_vect _types);
+_action getActionType(std::string codeLine, WPTool::string_vect _types);
 _init getInitType(std::string codeLIne);
 _empl getEmplType(std::string codeLine);
 
