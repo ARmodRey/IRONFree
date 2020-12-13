@@ -56,7 +56,6 @@ std::string script::getContent(int & filePos){
     int closeChars = 0;
     for(int i = filePos; i < _source->get_info().lines; i++){
         std::string *temp = new std::string(_source->get(i));
-        printf("%s\n" , temp->c_str());
         if(temp->length() == 0){
             delete temp;
             continue;
@@ -68,7 +67,6 @@ std::string script::getContent(int & filePos){
         if(temp->find("}") != std::string::npos){
             closeChars++;
         }
-        printf("o: %i  c%i\n", openChars, closeChars);
         delete temp;
         if(closeChars == openChars){
             filePos = i + 1;
