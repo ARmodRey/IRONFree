@@ -12,6 +12,7 @@ WPTool::string_vect _types {  // типы данных
 int main(){
     script scr("1");
     scr.runScript();
+    
     // _variable var = scr.get_initVars()[2];
     // std::cout << var.name << std::endl;
     // std::cout << var.properties["object0"] << std::endl;
@@ -19,7 +20,7 @@ int main(){
     // std::cout << var.properties["object2"] << std::endl;
     // std::cout << var.type << std::endl;  
 
-    _function _func = scr.get_initFuncs()[0];
+    _function _func = scr.get_initFuncs()[1];
     std::cout << _func.name << std::endl;
     std::cout << _func.type << std::endl;  
     std::cout << _func.startPos <<std::endl;

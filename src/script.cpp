@@ -20,13 +20,13 @@ void script::runScript(){
         }
         WPTool::string_content codeStr(sourceLine,";");
         int lineAction = getActionType(sourceLine,_types);
-        interpreter * intprLine;
         try{
             if(lineAction == is_init){
+                interpreter * intprLine;
                 int initType = getInitType(sourceLine);
                 int filePos = i;
                 if(codeStr.have("{") && !codeStr.have("}")){
-                    intprLine = new interpreter(sourceLine + getContent(i), initVars, initFuncs);
+                    intprLine = new interpreter(getContent(i), initVars, initFuncs);
                 }
                 else{
                     intprLine = new interpreter(sourceLine, initVars, initFuncs);
@@ -36,7 +36,7 @@ void script::runScript(){
                 intprLine->update(initVars,initFuncs);
                 if(initType == _func){
                     initFuncs[initFuncs.size() - 1].startPos = filePos;
-                    initFuncs[initFuncs.size() - 1].endPos = i;
+                    initFuncs[initFuncs.size() - 1].endPos = i - 1;
                 }
                 delete intprLine;
             }
@@ -53,27 +53,27 @@ void script::runScript(){
 std::string script::getContent(int & filePos){
     std::string result;
     int openChars = 0;
-    int *tempOpen = new int;
-    int *tempClose = new int;
-    int endStrPos;
-    *tempOpen = _source->find("{",filePos); 
-    *tempClose = _source->find("}",filePos);
-    while (*tempOpen < *tempClose){
-        openChars++;
-        *tempClose = _source->find("}",filePos); // получение позиции с конечным символом    
-        *tempOpen = _source->find("{",*tempOpen + 1);// получение позиции с начальным символом
-        if(*tempOpen == -1){
+    int closeChars = 0;
+    for(int i = filePos; i < _source->get_info().lines; i++){
+        std::string *temp = new std::string(_source->get(i));
+        printf("%s\n" , temp->c_str());
+        if(temp->length() == 0){
+            delete temp;
+            continue;
+        }
+        result += *temp;
+        if(temp->find("{") != std::string::npos){
+            openChars++;
+        }
+        if(temp->find("}") != std::string::npos){
+            closeChars++;
+        }
+        printf("o: %i  c%i\n", openChars, closeChars);
+        delete temp;
+        if(closeChars == openChars){
+            filePos = i + 1;
             break;
         }
     }
-    delete tempOpen;
-    delete tempClose;
-    for(int i = 0; i != openChars; i++){
-        endStrPos = _source->find("}",filePos); // получение позиции с конечным символом
-    }
-    for(int i = filePos + 1; i < endStrPos; i++){
-        result += _source->get(i);  
-    }
-    filePos = endStrPos + 1;
     return result;
 }

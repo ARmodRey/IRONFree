@@ -1,7 +1,11 @@
 num b = 1;
 num a = b+11;
 
-list[num] nums = {1,2,3}
+list[num] nums = {
+    1,
+    2,
+    3
+}
 
 proc createFiles(list[str] flList) {
     for(fileName in flLIst){
