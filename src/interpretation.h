@@ -16,6 +16,7 @@ private:
     void funcInitErr(_function func);                // проверка на ошибки в инициализации 
     void numVarInitIterpr(_variable &var);           // проверка на ошибки в инициализации
     double getResultOfExp(std::string exp);          // вычисленние значения из выражения
+    std::string valueCodeResult(std::string codeLine); // получения результата небольшого кусочка кода
     void funcInitInterpretation(std::string source); // интерпритация обьявления функции
     std::string getFuncResult(std::string source);   // получение результата функции
     _variables varList;                              // инициализированные переменные
@@ -24,7 +25,7 @@ private:
     WPTool::string_vect _types { "file", "folder", "str", "num", "proc"}; // типы данных
     _action interpT;     // тип интерпритации
     int actionType;
-    public:
+public:
     interpreter(std::string source, _variables varList, _functions funcList);
     void update(_variables &varList, _functions &funcList);
     void setTypeOfInterpritation(_action action, int actionType);

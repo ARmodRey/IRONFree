@@ -15,7 +15,7 @@ enum _init {
 };
 
 enum _empl{
-    _use_var = 0, _use_func, _add_val
+    _use_var = 0, _use_func, _c_if, _c_for, _c_wh
 };
 
 _action getActionType(std::string codeLine, WPTool::string_vect _types);

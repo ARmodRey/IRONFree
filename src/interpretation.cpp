@@ -34,8 +34,9 @@ void interpreter::start(){
 }
 
 int interpreter::findVarFromName(std::string varName){
+    WPTool::string_content name(varName,"[].");
     for(_variables::iterator _varIT = this->varList.begin(); _varIT != this->varList.end(); ++_varIT){
-        if(_varIT->name == varName ){
+        if(_varIT->name == name.get(0) ){
             return std::distance(this->varList.begin(), _varIT);
         }
     }
@@ -65,20 +66,34 @@ void interpreter::varInitInterpretation(std::string source){
     varList.push_back(var);   
 }
 
+std::string interpreter::valueCodeResult(std::string codeLine){
+     _variable foundVar = varList[findVarFromName(codeLine)];
+    if(foundVar.type.find("list") != std::string::npos){
+        WPTool::string_content line(codeLine,"[]");
+        return foundVar.properties["object" + line.get(1)];
+    }
+    else{
+        return foundVar.properties["object0"];
+    }
+}
+
 void interpreter::numVarInitIterpr(_variable &var){
     if(var.properties.size() == 1 ){
-        if(findVarFromName(var.properties["object0"]) != -1 ){
-            std::string * name = new std::string(var.name);
-            var = varList[findVarFromName(var.properties["object0"])];
-            var.name = *name;
-            delete name;
-        }
-        else if(var.properties["object0"].find_first_of("+-*/") != std::string::npos){
+        if(var.properties["object0"].find_first_of("+-*/") != std::string::npos){
             double expRes = getResultOfExp(var.properties["object0"]);
-            std::string objStr = std::to_string(expRes);
-            size_t zeroPosStart = objStr.find_first_of("0",objStr.find_first_of(".")) - 1;
+            std::string val = std::to_string(expRes);
+            int lastZeroPos = 0;
+            for(int i = val.size() -1; i > val.find_first_of("."); i--){
+                if(val[i] != '0'){
+                    lastZeroPos = i;
+                    break;
+                }
+            }
             var.properties.erase("object0");
-            var.properties["object0"] = objStr.substr(0,objStr.size() - zeroPosStart);
+            var.properties["object0"] = val.substr(0,lastZeroPos+1);
+        } 
+        else if(findVarFromName(var.properties["object0"]) != -1 ){
+           var.properties["object0"] = valueCodeResult(var.properties["object0"]);
         }
         else if(!WPTool::is_digit(var.properties["object0"])){
             throw var.properties["object0"] +  " --> is not digit"; 
@@ -91,15 +106,15 @@ void interpreter::numVarInitIterpr(_variable &var){
 
 double interpreter::getResultOfExp(std::string exp){
     WPTool::string_content nums(exp,"+-*/");
-    WPTool::string_content chars(exp,"1234567890.,abcdefghijklmnopqrstuvwxyz");
+    WPTool::string_content chars(exp,"1234567890.,abcdefghijklmnopqrstuvwxyz[]");
     double value = 0;
-    if(findVarFromName(nums[0]) != -1){
-        nums.edit(0,varList[findVarFromName(nums[0])].properties["object0"]);
+     if (findVarFromName(nums[0]) != -1){
+        nums.edit(0,valueCodeResult(nums[0]));
     }
     value += std::stof(nums[0].c_str()); 
     for(int i = 1; i < nums.get_size(); i++){
         if (findVarFromName(nums[i]) != -1){
-            nums.edit(i,varList[findVarFromName(nums[i])].properties["object0"]);
+            nums.edit(i,valueCodeResult(nums[i]));
         }
         // if (getEmplType(nums[i]) == _use_func){
         //     nums.edit(i,getFuncResult(nums[i]));
