@@ -83,8 +83,9 @@ void interpreter::numVarInitIterpr(_variable &var){
             double expRes = getResultOfExp(var.properties["object0"]);
             std::string val = std::to_string(expRes);
             int lastZeroPos = 0;
-            for(int i = val.size() -1; i > val.find_first_of("."); i--){
+            for(size_t i = val.size() - 1; i != val.find(".") - 1; i--){
                 if(val[i] != '0'){
+                    
                     lastZeroPos = i;
                     break;
                 }
@@ -105,20 +106,23 @@ void interpreter::numVarInitIterpr(_variable &var){
 }
 
 double interpreter::getResultOfExp(std::string exp){
-    WPTool::string_content nums(exp,"+-*/");
-    WPTool::string_content chars(exp,"1234567890.,abcdefghijklmnopqrstuvwxyz[]");
-    double value = 0;
-     if (findVarFromName(nums[0]) != -1){
-        nums.edit(0,valueCodeResult(nums[0]));
+    std::string exps = exp;
+    WPTool::string_content nums(exps,"+-*/");
+    bool findVars = true;
+    while(findVars != false){
+        findVars = false;
+        for(int i = 0; i < nums.get_size(); i++){
+            if(findVarFromName(nums[i]) != -1){
+                findVars = true;
+                castingNumExpressions(exps);
+                nums.set_string(exps);
+            }
+        }
     }
+    double value = 0;
+    WPTool::string_content chars(exps,"1234567890.,abcdefghijklmnopqrstuvwxyz[]");
     value += std::stof(nums[0].c_str()); 
     for(int i = 1; i < nums.get_size(); i++){
-        if (findVarFromName(nums[i]) != -1){
-            nums.edit(i,valueCodeResult(nums[i]));
-        }
-        // if (getEmplType(nums[i]) == _use_func){
-        //     nums.edit(i,getFuncResult(nums[i]));
-        // } 
         if (!WPTool::is_digit(nums[i])){
             throw nums[i] + " --> is not variable"; 
         }
@@ -142,6 +146,25 @@ double interpreter::getResultOfExp(std::string exp){
     }
     return value;
 }
+
+void interpreter::castingNumExpressions(std::string & exp){
+    WPTool::string_content nums(exp,"+-*/");
+    for(int i = 0; i < nums.get_size(); i++){
+        if (findVarFromName(nums[i]) != -1){
+            nums.edit(i,valueCodeResult(nums[i]));
+        }
+        // if (getEmplType(nums[i]) == _use_func){
+        //     nums.edit(i,getFuncResult(nums[i]));
+        // } 
+    }
+    exp = nums.get_string();
+}
+
+// void interpreter::listVarInitInterpr(_variable &var){
+//     for(auto propItr = var.properties.begin(); propItr != var.properties.end(); propItr++){
+
+//     }
+// }
 
 void interpreter::funcInitInterpretation(std::string source){
     _function func(initFunction(source));

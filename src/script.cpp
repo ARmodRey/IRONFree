@@ -42,10 +42,12 @@ void script::runScript(){
             }
         }
         catch(const char * _error_message){
-            printf("line %i:%s\n", i,  _error_message);
+            printf("line %i: %s\n", i,  _error_message);
+            exit(0);
         }    
         catch(std::string _error_message){
-            printf("line %i:%s\n", i, _error_message.c_str());
+            printf("line %i: %s\n", i, _error_message.c_str());
+            exit(0);
         }
     }
 }

@@ -1,9 +1,9 @@
 num b;
 num a;
 
-list[num] nums = { 1, 2, 3}
+list[num] nums = { 1+1, nums[0], 3*2 } 
 
-num v = nums[2]+nums[1]+nums[0]+5.023001;
+num v = nums[2]+nums[1]+nums[0]+1.1; 
 
 proc createFiles(list[str] flList) {
     for(fileName in flLIst){
