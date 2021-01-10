@@ -38,10 +38,4 @@ struct _instruction {
     bool end = false;     
 };
 
-struct _codePart{
-    std::vector<_variable> variables;
-    std::vector<_instruction> instructions;
-    std::vector<_baseCodeUnit*> inter_quene;
-};
-
 #endif

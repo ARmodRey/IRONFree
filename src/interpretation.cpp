@@ -63,11 +63,14 @@ void interpreter::varInitInterpretation(std::string source){
     if(var.type == "num"){ // инициализация переменной типа num
         numVarInitIterpr(var); // вносим переменную в память и проверяем ее значение 
     }
+    if(var.type == "str"){ // инициализация переменной типа str
+        strVarInitIterpr(var); // вносим переменную в память и проверяем ее значение 
+    }
     varList.push_back(var);   
 }
 
 std::string interpreter::valueCodeResult(std::string codeLine){
-     _variable foundVar = varList[findVarFromName(codeLine)];
+    _variable foundVar = varList[findVarFromName(codeLine)];
     if(foundVar.type.find("list") != std::string::npos){
         WPTool::string_content line(codeLine,"[]");
         return foundVar.properties["object" + line.get(1)];
@@ -82,19 +85,18 @@ void interpreter::numVarInitIterpr(_variable &var){
         if(var.properties["object0"].find_first_of("+-*/") != std::string::npos){
             double expRes = getResultOfExp(var.properties["object0"]);
             std::string val = std::to_string(expRes);
-            int lastZeroPos = 0;
+            int lastZeroPos = 0; // ищем поледнюю нулевую позицию
             for(size_t i = val.size() - 1; i != val.find(".") - 1; i--){
                 if(val[i] != '0'){
-                    
                     lastZeroPos = i;
                     break;
                 }
             }
             var.properties.erase("object0");
-            var.properties["object0"] = val.substr(0,lastZeroPos+1);
+            var.properties["object0"] = val.substr(0,lastZeroPos+1); // обрезаем строку от лишних нулей
         } 
         else if(findVarFromName(var.properties["object0"]) != -1 ){
-           var.properties["object0"] = valueCodeResult(var.properties["object0"]);
+           var.properties["object0"] = valueCodeResult(var.properties["object0"]); // заменяем имя переменной на ее значение
         }
         else if(!WPTool::is_digit(var.properties["object0"])){
             throw var.properties["object0"] +  " --> is not digit"; 
@@ -107,22 +109,22 @@ void interpreter::numVarInitIterpr(_variable &var){
 
 double interpreter::getResultOfExp(std::string exp){
     std::string exps = exp;
-    WPTool::string_content nums(exps,"+-*/");
-    bool findVars = true;
+    WPTool::string_content nums(exps,"+-*/"); // выделяем значения выражения
+    bool findVars = true; // флаг говорящий о том, что переменные все еще пресутствуют
     while(findVars != false){
         findVars = false;
         for(int i = 0; i < nums.get_size(); i++){
             if(findVarFromName(nums[i]) != -1){
                 findVars = true;
-                castingNumExpressions(exps);
+                castingExpressions(exps,"+-*/");
                 nums.set_string(exps);
             }
         }
     }
     double value = 0;
-    WPTool::string_content chars(exps,"1234567890.,abcdefghijklmnopqrstuvwxyz[]");
+    WPTool::string_content chars(exps,"1234567890.,abcdefghijklmnopqrstuvwxyz[]"); // обрезаем знаки
     value += std::stof(nums[0].c_str()); 
-    for(int i = 1; i < nums.get_size(); i++){
+    for(int i = 1; i < nums.get_size(); i++){  // вычисления 
         if (!WPTool::is_digit(nums[i])){
             throw nums[i] + " --> is not variable"; 
         }
@@ -147,8 +149,8 @@ double interpreter::getResultOfExp(std::string exp){
     return value;
 }
 
-void interpreter::castingNumExpressions(std::string & exp){
-    WPTool::string_content nums(exp,"+-*/");
+void interpreter::castingExpressions(std::string & exp,std::string delim){
+    WPTool::string_content nums(exp,delim);
     for(int i = 0; i < nums.get_size(); i++){
         if (findVarFromName(nums[i]) != -1){
             nums.edit(i,valueCodeResult(nums[i]));
@@ -160,16 +162,43 @@ void interpreter::castingNumExpressions(std::string & exp){
     exp = nums.get_string();
 }
 
-// void interpreter::listVarInitInterpr(_variable &var){
-//     for(auto propItr = var.properties.begin(); propItr != var.properties.end(); propItr++){
-
-//     }
-// }
-
 void interpreter::funcInitInterpretation(std::string source){
     _function func(initFunction(source));
     funcInitErr(func);
     funcList.push_back(func);
+}
+
+void interpreter::strVarInitIterpr(_variable &var){
+    if(var.properties["object0"].find_first_of("+") != std::string::npos){
+        WPTool::string_content str(var.properties["object0"], "+");
+        std::string *temp = new std::string(var.properties["object0"]);
+        bool findVars = true; // флаг говорящий о том, что переменные все еще пресутствуют
+        while(findVars != false){
+            findVars = false;
+            for(int i = 0; i < str.get_size(); i++){
+                if(findVarFromName(str[i]) != -1){
+                    findVars = true;
+                    castingExpressions(*temp, "+");
+                    str.set_string(*temp);
+                }
+            }
+        }
+        *temp = "";
+        for (int i = 0; i < str.get_size(); i++){
+            *temp += str[i];
+        }
+        var.properties.erase("object0");
+        var.properties["object0"] = *temp;
+        delete temp;
+    }
+    if(var.properties.size() != 1){
+        std::string * count_obj = new std::string;
+        for(int i = 0; i < var.properties.size(); i++ ){
+            *count_obj = "object" + std::to_string(i);
+            var.properties["object0"] += " " + var.properties[*count_obj]; // собираем строку воедино
+        }
+        delete count_obj;
+    }
 }
 
 void interpreter::funcInitErr(_function func){

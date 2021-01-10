@@ -15,8 +15,8 @@ private:
     void varInitErr(_variable var);                  // проверка на ошибки в инициализации
     void funcInitErr(_function func);                // проверка на ошибки в инициализации 
     void numVarInitIterpr(_variable &var);           // проверка на ошибки в инициализации num
-    void castingNumExpressions(std::string & exp);
-    //void listVarInitInterpr(_variable &var);         // проверка на ошибки в инициализации list
+    void strVarInitIterpr(_variable &var);           // проверка на ошибки в инициализации str
+    void castingExpressions(std::string & exp,std::string delim);
     double getResultOfExp(std::string exp);          // вычисленние значения из выражения
     std::string valueCodeResult(std::string codeLine); // получения результата небольшого кусочка кода
     void funcInitInterpretation(std::string source); // интерпритация обьявления функции

@@ -3,7 +3,7 @@ num a;
 
 list[num] nums = { 1+1, nums[0], 3*2 } 
 
-num v = nums[2]+nums[1]+nums[0]+1.1; 
+str v = as+fg+er+t+y; 
 
 proc createFiles(list[str] flList) {
     for(fileName in flLIst){
